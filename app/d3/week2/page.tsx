@@ -2,16 +2,11 @@ import Link from "next/link";
 
 const PAGES = [
   {
-    href: "/d3/week2/pattern-compare",
-    title: "Blackbox vs React-centric",
-    desc: "같은 막대그래프를 두 패턴으로 구현해 코드 복잡도와 구조 차이를 나란히 비교합니다.",
-    tags: ["Blackbox Pattern", "React-centric", "data join", "D3 transition"],
-  },
-  {
-    href: "/d3/week2/realtime-chart",
     title: "실시간 라인 차트",
     desc: "0.5초마다 새 데이터를 추가하고 오래된 데이터를 제거하는 슬라이딩 윈도우 라인 차트입니다.",
     tags: ["useLineChart", "scaleTime", "area", "curveCatmullRom", "setInterval"],
+    refHref: "/d3/week2/realtime-chart",
+    practiceHref: "/d3/week2/practice/realtime-chart",
   },
 ];
 
@@ -35,16 +30,15 @@ export default function Page() {
         미션: 실시간 라인 차트
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
-        {PAGES.map(({ href, title, desc, tags }) => (
-          <Link
-            key={href}
-            href={href}
-            className="block rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-sm transition-all"
+      <div className="max-w-2xl space-y-3">
+        {PAGES.map(({ title, desc, tags, refHref, practiceHref }) => (
+          <div
+            key={refHref}
+            className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5"
           >
-            <p className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">{title}</p>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4 leading-relaxed">{desc}</p>
-            <div className="flex flex-wrap gap-1.5">
+            <p className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{title}</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3 leading-relaxed">{desc}</p>
+            <div className="flex flex-wrap gap-1.5 mb-4">
               {tags.map((tag) => (
                 <span
                   key={tag}
@@ -54,7 +48,21 @@ export default function Page() {
                 </span>
               ))}
             </div>
-          </Link>
+            <div className="flex gap-2">
+              <Link
+                href={refHref}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+              >
+                참고 구현
+              </Link>
+              <Link
+                href={practiceHref}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+              >
+                직접 실습 →
+              </Link>
+            </div>
+          </div>
         ))}
       </div>
     </main>

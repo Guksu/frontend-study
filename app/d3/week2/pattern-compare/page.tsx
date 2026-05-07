@@ -1,10 +1,5 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
-
-const PatternCompareView = dynamic(
-  () => import("./_components/PatternCompareView"),
-  { ssr: false },
-);
+import PatternCompareLoader from "./_components/PatternCompareLoader";
 
 export default function Page() {
   return (
@@ -35,7 +30,7 @@ export default function Page() {
         )}
       </div>
 
-      <PatternCompareView />
+      <PatternCompareLoader />
     </main>
   );
 }

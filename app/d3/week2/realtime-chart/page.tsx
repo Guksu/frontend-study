@@ -1,10 +1,5 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
-
-const RealtimeLineChart = dynamic(
-  () => import("./_components/RealtimeLineChart"),
-  { ssr: false },
-);
+import RealtimeLineChartLoader from "./_components/RealtimeLineChartLoader";
 
 export default function Page() {
   return (
@@ -39,7 +34,7 @@ export default function Page() {
         ))}
       </div>
 
-      <RealtimeLineChart />
+      <RealtimeLineChartLoader />
     </main>
   );
 }
